@@ -1,10 +1,5 @@
 package com.naosim.dbtestutil.db;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
@@ -13,16 +8,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class TableInsertEvent {
-    @Getter
     private final String tableName;
-
-    @Getter
     private final List<String> columnNames;
-
-    @Getter
     private final Object[] values;
+
+    TableInsertEvent(String tableName, List<String> columnNames, Object[] values) {
+        this.tableName = tableName;
+        this.columnNames = columnNames;
+        this.values = values;
+    }
 
     public static TableInsertEvent createFromMap(String tableName, Map<String, Object> map) {
         List<String> columnNames = new ArrayList<>();
@@ -125,10 +120,27 @@ public class TableInsertEvent {
         }
     }
 
-    @RequiredArgsConstructor
+    public String getTableName() {
+        return tableName;
+    }
+
+    public List<String> getColumnNames() {
+        return columnNames;
+    }
+
+    public Object[] getValues() {
+        return values;
+    }
+
     public static class Factory {
         private final String tableName;
         private final List<String> columnNames;
+
+        public Factory(String tableName, List<String> columnNames) {
+            this.tableName = tableName;
+            this.columnNames = columnNames;
+        }
+
         public TableInsertEvent create(Object... values) {
             if(values.length != columnNames.size()) {
                 throw new RuntimeException("カラムの数と長さが合いません");
