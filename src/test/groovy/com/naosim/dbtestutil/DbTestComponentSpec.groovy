@@ -18,7 +18,7 @@ class DbTestComponentSpec extends Specification {
 
     def setup() {
         try {
-            sut.exec("CREATE TABLE user (name TEXT, date DATE)")
+            sut.exec(new File("ddl/createtable.sql"))
         } catch (Exception e) {
 
         }

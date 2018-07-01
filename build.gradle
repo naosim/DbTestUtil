@@ -43,7 +43,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository url: "file://${rootDir}/docs"
-            pom.version = '0.0.2'
+            pom.version = '1.0.0'
             pom.groupId = 'com.naosim'
             pom.artifactId = 'dbtestutil'
         }

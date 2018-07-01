@@ -1,0 +1,1 @@
+CREATE TABLE user (name TEXT, date DATE);

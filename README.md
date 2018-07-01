@@ -16,7 +16,7 @@ repositories {
 
 #### dependenciesに追加
 ```
-testCompile group: 'com.naosim', name: 'dbtestutil', version: '0.0.1'
+testCompile group: 'com.naosim', name: 'dbtestutil', version: '1.0.0'
 ```
 
 #### その他dependencies追加  
